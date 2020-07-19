@@ -13,12 +13,12 @@ public class Task1 {
 
 			if (arrayOfNums2[0] == arrayOfNums1[i]) {
 
-				int k = i;
-				int j = 0;
+				int indexOfSubsequence = i;
+				int indexOfSequence = 0;
 
-				while (k < arrayOfNums1.length && arrayOfNums2[j] == arrayOfNums1[k]) {
+				while (indexOfSubsequence < arrayOfNums1.length && arrayOfNums2[indexOfSequence] == arrayOfNums1[indexOfSubsequence]) {
 
-					if (j == arrayOfNums2.length - 1) {
+					if (indexOfSequence == arrayOfNums2.length - 1) {
 
 						isBelong = true;
 						indexOfFirstElement = i;
@@ -26,8 +26,8 @@ public class Task1 {
 
 					}
 
-					j++;
-					k++;
+					indexOfSequence++;
+					indexOfSubsequence++;
 
 				}
 
