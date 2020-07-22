@@ -26,9 +26,9 @@ public class CarProcessor {
 	}
 
 	void printCars(Car car) {
-			System.out.println(car.id + " " + car.brand + " " +
-					car.model + " " + car.year + " " + car.color +
-					" " + car.cost + " " + car.registerNumber);
+		System.out.println(car.id + " " + car.brand + " " + car.model + 
+				" " + car.year + " " + car.color + " " + car.cost + 
+				" " + car.registerNumber);
 	}
 
 }

@@ -9,6 +9,7 @@ public class Runner {
 				new Car(4, "Chevrolet", "Camaro", 2019, "Black", 31_499.00, "AA7887AA")};
 		
 		CarProcessor proc = new CarProcessor();
+		
 		proc.screenByBrand(cars, "Ford");
 		System.out.println();
 		proc.screenByModelAndExplPeriod(cars, "Camaro", 4);
