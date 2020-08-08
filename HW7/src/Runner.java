@@ -6,19 +6,20 @@ public class Runner {
                 new Hatchback("Toyota Corolla", 17_000, 270, 8.1, 5), new Truck("Isuzu", 23_000, 150, 16.5, 30_000) };
         TaxiStation station = new TaxiStation(cars);
         double sumCostOfStation;
-        Car[] sortedCars;
+        Car[] searchedBySpeed;
 
         sumCostOfStation = station.calculateCostOfTaxiStation();
-        cars = station.sortByFuelConsumption();
-        sortedCars = station.searchBySpeed(220, 250);
+        station.sortByFuelConsumption();
+        searchedBySpeed = station.searchBySpeed(220, 250);
+        System.out.println("Sorted by fuel: ");
         for (Car car : cars) {
             System.out.println(car.toString());
         }
         System.out.println();
         System.out.println("Summary cost of taxi station = " + sumCostOfStation);
         System.out.println();
-        System.out.println("Sorted by fuel: ");
-        for (Car car : sortedCars) {
+        System.out.println("Sorted by speed: ");
+        for (Car car : searchedBySpeed) {
             System.out.println(car.toString());
         }
 

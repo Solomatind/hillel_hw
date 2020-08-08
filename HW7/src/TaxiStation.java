@@ -26,49 +26,41 @@ public class TaxiStation {
         return costOfTaxiStatio;
     }
 
-    public Car[] sortByFuelConsumption() {
-        Car[] result = cars;
+    public void sortByFuelConsumption() {
         double temp;
-        for (int i = 0; i < result.length; i++) {
-            for (int j = result.length - 1; j > i; j--) {
-                if (result[j - 1].getFuelConsumption() > result[j].getFuelConsumption()) {
-                    temp = result[j - 1].getFuelConsumption();
-                    result[j - 1].setFuelConsumption(result[j].getFuelConsumption());
-                    result[j].setFuelConsumption(temp);
+        for (int i = 0; i < cars.length; i++) {
+            for (int j = cars.length - 1; j > i; j--) {
+                if (cars[j - 1].getFuelConsumption() > cars[j].getFuelConsumption()) {
+                    temp = cars[j - 1].getFuelConsumption();
+                    cars[j - 1].setFuelConsumption(cars[j].getFuelConsumption());
+                    cars[j].setFuelConsumption(temp);
                 }
             }
         }
-        return result;
     }
 
     public Car[] searchBySpeed(double min, double max) {
-        Car[] arrayForCopy = new Car[cars.length];
+        Car[] findedCars = {};
         for (int i = 0; i < cars.length; i++) {
-            if (min < cars[i].getSpeed() && cars[i].getSpeed() < max) {
-                arrayForCopy[i] = cars[i];
+            if(cars[i].getSpeed() > min && cars[i].getSpeed() < max)
+            findedCars = extendArray(cars[i], findedCars); 
+                
             }
+        return findedCars;
         }
-        return arrayCopy(arrayForCopy);
-    }
 
-    private Car[] arrayCopy(Car[] cars) {
-        Car[] result = {};
-        for (int i = 0; i < cars.length; i++) {
-            if (cars[i] != null) {
-                result = new Car[i + 1];
-                for (int j = 0; j < cars.length; j++) {
-                    if (j != result.length) {
-                        result[j] = cars[j];
-                    } else {
-                        break;
-                    }
-                }
-            } else {
-                break;
+    private Car[] extendArray(Car findedCar, Car[] coppiedArray) {
+        if(coppiedArray == null) {
+            coppiedArray[0] = findedCar;
+            return coppiedArray;
+        } else {
+            Car[] extendedArray = new Car[coppiedArray.length + 1];
+            for (int i = 0; i < coppiedArray.length; i++) {
+                extendedArray[i] = coppiedArray[i];
             }
-
+            extendedArray[coppiedArray.length] = findedCar;
+            return extendedArray;
         }
-        return result;
-    }
+    }    
 
 }

@@ -1,25 +1,25 @@
 
 public class Dot {
-    
-    private int x;
-    private int y;
-    
+
+    private double x;
+    private double y;
+
     Dot() {
         x = 0;
         y = 0;
     }
-    
-    Dot(int x, int y) {
+
+    Dot(double x, double y) {
         this.x = x;
         this.y = y;
     }
-    
-    public int getX() {
+
+    public double getX() {
         return x;
     }
-    
-    public int getY() {
+
+    public double getY() {
         return y;
     }
-    
+
 }
