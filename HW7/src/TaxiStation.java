@@ -40,13 +40,13 @@ public class TaxiStation {
     }
 
     public Car[] searchBySpeed(double min, double max) {
-        Car[] findedCars = {};
+        Car[] foundCars = {};
         for (int i = 0; i < cars.length; i++) {
             if(cars[i].getSpeed() > min && cars[i].getSpeed() < max)
-            findedCars = extendArray(cars[i], findedCars); 
+            foundCars = extendArray(cars[i], foundCars); 
                 
             }
-        return findedCars;
+        return foundCars;
         }
 
     private Car[] extendArray(Car findedCar, Car[] coppiedArray) {

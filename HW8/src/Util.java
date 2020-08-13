@@ -9,19 +9,18 @@ public class Util {
         return side;
     }
 
-    public static double[] sortByAscend(double side1, double side2, double side3) {
-        double[] ascendingArray = { side1, side2, side3 };
+    public static double[] sortByAscend(double ...sides) {
         double temp;
-        for (int i = 0; i < ascendingArray.length; i++) {
-            for (int j = ascendingArray.length - 1; j > i; j--) {
-                if (ascendingArray[j - 1] > ascendingArray[j]) {
-                    temp = ascendingArray[j - 1];
-                    ascendingArray[j - 1] = ascendingArray[j];
-                    ascendingArray[j] = temp;
+        for (int i = 0; i < sides.length; i++) {
+            for (int j = sides.length - 1; j > i; j--) {
+                if (sides[j - 1] > sides[j]) {
+                    temp = sides[j - 1];
+                    sides[j - 1] = sides[j];
+                    sides[j] = temp;
                 }
             }
         }
-        return ascendingArray;
+        return sides;
     }
 
     public static double round(double value) {
