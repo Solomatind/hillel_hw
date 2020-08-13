@@ -1,7 +1,7 @@
 package com.hillel.figure.triangle.impl;
 
 import com.hillel.figure.triangle.Triangle;
-import com.hillel.figure.triangle.sort.TrianglesCriteria;
+import com.hillel.figure.triangle.criteria.TrianglesCriteria;
 
 public class Isosceles implements TrianglesCriteria {
 

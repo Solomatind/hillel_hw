@@ -3,10 +3,10 @@ package com.hillel.figure.triangle.processor;
 import java.util.Arrays;
 
 import com.hillel.figure.triangle.Triangle;
+import com.hillel.figure.triangle.criteria.TrianglesCriteria;
 import com.hillel.figure.triangle.impl.Equilateral;
 import com.hillel.figure.triangle.impl.Isosceles;
 import com.hillel.figure.triangle.impl.Rectangular;
-import com.hillel.figure.triangle.sort.TrianglesCriteria;
 import com.hillel.figure.triangle.util.Util;
 
 public class Processor {
