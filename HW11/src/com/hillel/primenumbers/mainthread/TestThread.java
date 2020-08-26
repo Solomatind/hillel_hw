@@ -12,22 +12,21 @@ public class TestThread {
         int numberOfThreads;
         int lengthOfRange;
         Scanner scanner = new Scanner(System.in);
-        
+
         lowerThreshold = scanner.nextInt();
         upperThreshold = scanner.nextInt();
         numberOfThreads = scanner.nextInt();
-        lengthOfRange = (int) Math.ceil(((double) (upperThreshold - lowerThreshold)/numberOfThreads));
-        PrimeNmberFinder threads[] = new PrimeNmberFinder[numberOfThreads]; 
+        lengthOfRange = (int) Math.ceil(((double) (upperThreshold - lowerThreshold) / numberOfThreads));
+        PrimeNmberFinder threads[] = new PrimeNmberFinder[numberOfThreads];
         for (int i = 0; i < numberOfThreads; i++) {
             if (i * lengthOfRange <= (upperThreshold - lowerThreshold)) {
-                threads[i] = new PrimeNmberFinder(lowerThreshold, upperThreshold, i, 
-                        lengthOfRange); 
+                threads[i] = new PrimeNmberFinder(lowerThreshold, upperThreshold, i, lengthOfRange);
             }
         }
         try {
             for (PrimeNmberFinder primeNmberFinder : threads) {
                 if (primeNmberFinder != null) {
-                    primeNmberFinder.t.join(); 
+                    primeNmberFinder.t.join();
                 }
             }
         } catch (InterruptedException e) {
