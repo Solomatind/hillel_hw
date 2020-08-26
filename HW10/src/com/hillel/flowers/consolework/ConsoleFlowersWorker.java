@@ -16,7 +16,7 @@ public class ConsoleFlowersWorker {
 
     public ConsoleFlowersWorker(FlowersShop flowerShop) {
         this.flowerShop = flowerShop;
-        scanner = new java.util.Scanner(System.in);
+        scanner = new Scanner(System.in);
     }
 
     public static void main(String[] args) {
