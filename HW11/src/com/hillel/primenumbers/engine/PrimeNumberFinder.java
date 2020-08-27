@@ -1,19 +1,19 @@
 package com.hillel.primenumbers.engine;
 
-import java.util.Arrays;
+import com.hillel.primenumbers.utils.ArrayUtil;
 
-public class PrimeNmberFinder implements Runnable {
+public class PrimeNumberFinder implements Runnable {
 
-    public Thread t;
-    int subArray[];
-    int primeNumbersArray[];
-    int range;
-    int lowerThreshold;
-    int upperThreshold;
-    int lengthOfRange;
-    public static int commonArrayOfPrimeNums[];
+    private Thread t;
+    private int subArray[];
+    private int primeNumbersArray[];
+    private int range;
+    private int lowerThreshold;
+    private int upperThreshold;
+    private int lengthOfRange;
+    private static int commonArrayOfPrimeNums[];
 
-    public PrimeNmberFinder(int lowerThreshold, int upperThreshold, int range, int lengthOfRange) {
+    public PrimeNumberFinder(int lowerThreshold, int upperThreshold, int range, int lengthOfRange) {
         t = new Thread(this);
         this.lowerThreshold = lowerThreshold;
         this.upperThreshold = upperThreshold;
@@ -48,13 +48,13 @@ public class PrimeNmberFinder implements Runnable {
     private void findPrimeNumbers() {
         for (int value : subArray) {
             if (value == 2 || value == 3 || value == 5) {
-                primeNumbersArray = extendArray(value, primeNumbersArray);
+                primeNumbersArray = ArrayUtil.extendArray(value, primeNumbersArray);
             }
             for (int i = 2; i < (value / 2); i++) {
                 if (value % i == 0) {
                     break;
                 } else if ((i == ((value / 2) - 1))) {
-                    primeNumbersArray = extendArray(value, primeNumbersArray);
+                    primeNumbersArray = ArrayUtil.extendArray(value, primeNumbersArray);
                 }
             }
         }
@@ -63,24 +63,17 @@ public class PrimeNmberFinder implements Runnable {
     private synchronized void addPrimeNumsToComArray() {
         if (primeNumbersArray != null) {
             for (int primeNumber : primeNumbersArray) {
-                commonArrayOfPrimeNums = extendArray(primeNumber, commonArrayOfPrimeNums);
+                commonArrayOfPrimeNums = ArrayUtil.extendArray(primeNumber, commonArrayOfPrimeNums);
             }
         }
     }
-
-    private int[] extendArray(int value, int[] coppiedArray) {
-        if (coppiedArray == null) {
-            int[] extendedArray = new int[1];
-            extendedArray[0] = value;
-            return extendedArray;
-        } else {
-            int[] extendedArray = new int[coppiedArray.length + 1];
-            for (int i = 0; i < coppiedArray.length; i++) {
-                extendedArray[i] = coppiedArray[i];
-            }
-            extendedArray[coppiedArray.length] = value;
-            return extendedArray;
-        }
+    
+    public Thread getT() {
+        return t;
+    }
+    
+    public static int[] getCommonArrayOfPrimeNums() {
+        return commonArrayOfPrimeNums;
     }
 
 }

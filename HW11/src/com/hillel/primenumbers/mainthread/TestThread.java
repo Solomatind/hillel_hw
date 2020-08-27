@@ -1,9 +1,8 @@
 package com.hillel.primenumbers.mainthread;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
-import com.hillel.primenumbers.engine.PrimeNmberFinder;
+import com.hillel.primenumbers.engine.PrimeNumberFinder;
 
 public class TestThread {
     public static void main(String[] args) {
@@ -12,28 +11,30 @@ public class TestThread {
         int numberOfThreads;
         int lengthOfRange;
         Scanner scanner = new Scanner(System.in);
-
+        
+        System.out.print("Lower threshold -> ");
         lowerThreshold = scanner.nextInt();
+        System.out.print("Upper threshold -> ");
         upperThreshold = scanner.nextInt();
+        System.out.print("Number of threads -> ");
         numberOfThreads = scanner.nextInt();
+        scanner.close();
         lengthOfRange = (int) Math.ceil(((double) (upperThreshold - lowerThreshold) / numberOfThreads));
-        PrimeNmberFinder threads[] = new PrimeNmberFinder[numberOfThreads];
+        PrimeNumberFinder threads[] = new PrimeNumberFinder[numberOfThreads];
         for (int i = 0; i < numberOfThreads; i++) {
-            if (i * lengthOfRange <= (upperThreshold - lowerThreshold)) {
-                threads[i] = new PrimeNmberFinder(lowerThreshold, upperThreshold, i, lengthOfRange);
-            }
+                threads[i] = new PrimeNumberFinder(lowerThreshold, upperThreshold, i, lengthOfRange);
         }
         try {
-            for (PrimeNmberFinder primeNmberFinder : threads) {
+            for (PrimeNumberFinder primeNmberFinder : threads) {
                 if (primeNmberFinder != null) {
-                    primeNmberFinder.t.join();
+                    primeNmberFinder.getT().join();
                 }
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        for (int i = 0; i < PrimeNmberFinder.commonArrayOfPrimeNums.length; i++) {
-            System.out.print(PrimeNmberFinder.commonArrayOfPrimeNums[i] + " ");
+        for (int i = 0; i < PrimeNumberFinder.getCommonArrayOfPrimeNums().length; i++) {
+            System.out.print(PrimeNumberFinder.getCommonArrayOfPrimeNums()[i] + " ");
         }
     }
 }
