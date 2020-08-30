@@ -1,0 +1,4 @@
+Sedan,Opel Astra,12000,240,7,5,false;
+Minibus,Opel Vivaro,15000,230,12,8,false;
+Eco,BMW i3,24000,160,5,120;
+Truck,Isuzu,23000,150,16.5,30000

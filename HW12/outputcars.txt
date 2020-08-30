@@ -1,0 +1,4 @@
+Eco,BMW i3,24000.0,160.0,5,120.0;
+Sedan,Opel Astra,12000.0,240.0,7.0,5,false;
+Minibus,Opel Vivaro,15000.0,230.0,12.0,8,false;
+Truck,Isuzu,23000.0,150.0,16.5,30000.0
