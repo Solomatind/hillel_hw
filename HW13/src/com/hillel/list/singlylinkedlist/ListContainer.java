@@ -14,42 +14,39 @@ public class ListContainer<E> {
     }
 
     private Node<E> head;
-    private Node<E> tail;
+    private int size;
 
     public ListContainer() {
-        head = null;
     }
 
     public ListContainer(E[] elements) {
-        addFirst(elements[0]);
-        addLast(elements[elements.length - 1]);
-        for (int i = 1; i < elements.length - 1; i++) {
-            this.addByIndex(elements[i], i);
+        for (E e : elements) {
+            addLast(e);
         }
+    }
+
+    private Node<E> getNodeByIndex(int index) {
+        Node<E> node = head;
+        int counter = 0;
+        while (counter != index) {
+            node = node.nextElement;
+            counter++;
+        }
+        return node;
     }
 
     public void addByIndex(E element, int index) {
         if (index == 0) {
             addFirst(element);
-        } else if (index == (getSize() - 1)) {
-            addLast(element);
+            return;
         } else {
-            Node node = head;
+            Node currentNode = getNodeByIndex(index - 1);
             Node nodeToAdd = new Node<>();
-            int counter = 1;
             nodeToAdd.currentElement = element;
-            while (node.nextElement != null) {
-                if (counter == index) {
-                    nodeToAdd.nextElement = node.nextElement;
-                    node.nextElement = nodeToAdd;
-                    return;
-                }
-                if (counter < index) {
-                    node = node.nextElement;
-                }
-                counter++;
-            }
+            nodeToAdd.nextElement = currentNode.nextElement;
+            currentNode.nextElement = nodeToAdd;
         }
+        size++;
     }
 
     public void addFirst(E element) {
@@ -57,117 +54,97 @@ public class ListContainer<E> {
         node.currentElement = element;
         if (head == null) {
             head = node;
-            tail = node;
         } else {
             node.nextElement = head;
             head = node;
         }
+        size++;
     }
 
     public void addLast(E element) {
         Node node = new Node<>();
         node.currentElement = element;
-        if (tail == null) {
+        if (head == null) {
             head = node;
-            tail = node;
         } else {
-            tail.nextElement = node;
-            tail = node;
+            Node last = getNodeByIndex(size - 1);
+            last.nextElement = node;
         }
+        size++;
     }
 
     public void replaceElements(int index1, int index2) {
-        Node first = head;
-        Node second = new Node<>();
-        int counter = 0;
-        while (first.nextElement != null) {
-            if (counter == index1 - 1) {
-                second = first;
-                while (second.nextElement != null) {
-                    if (counter == index2 - 1) {
-                        Node temp = first.nextElement;
-                        first.nextElement = second.nextElement;
-                        second.nextElement = temp;
-                        temp = first.nextElement.nextElement;
-                        first.nextElement.nextElement = second.nextElement.nextElement;
-                        second.nextElement.nextElement = temp;
-                        return;
-                    }
-                    second = second.nextElement;
-                    counter++;
-                }
-            }
-            first = first.nextElement;
-            counter++;
+        Node first;
+        Node second;
+        Node temp;
+        if (index1 == 0) {
+            first = head;
+            second = getNodeByIndex(index2 - 1);
+            temp = second.nextElement.nextElement;
+            head = second.nextElement;
+            second.nextElement = first;
+            head.nextElement = first.nextElement;
+            second.nextElement.nextElement = temp;
+        } else if (index2 == 0) {
+            first = head;
+            second = getNodeByIndex(index1 - 1);
+            temp = second.nextElement.nextElement;
+            head = second.nextElement;
+            second.nextElement = first;
+            head.nextElement = first.nextElement;
+            second.nextElement.nextElement = temp;
+
+        } else {
+            first = getNodeByIndex(index1 - 1);
+            second = getNodeByIndex(index2 - 1);
+            temp = first.nextElement;
+            first.nextElement = second.nextElement;
+            second.nextElement = temp;
+            temp = first.nextElement.nextElement;
+            first.nextElement.nextElement = second.nextElement.nextElement;
+            second.nextElement.nextElement = temp;
         }
     }
 
     public void removeFirst() {
         if (head == null) {
             System.out.println("Empty");
+            return;
         } else {
             head = head.nextElement;
         }
+        size--;
     }
 
     public void removeLast() {
-        Node current = head;
-        if (isEmpty()) {
-            System.out.println("Empty");
-            return;
-        }
-        if (current.nextElement != null) {
-            while (current.nextElement != null) {
-                if (current.nextElement.nextElement == null) {
-                    current.nextElement = null;
-                    tail = current;
-                    return;
-                }
-                current = current.nextElement;
-            }
-        } else {
+        if (size == 1) {
             head = null;
-            tail = null;
+            return;
+        } else {
+            Node node = getNodeByIndex(size - 2);
+            node.nextElement = null;
         }
+        size--;
     }
 
     public void removeByIndex(int index) {
-        int counter = 0;
         if (head == null) {
             System.out.println("Empty");
             return;
         }
-        if (head == tail) {
+        if (size == 1) {
             head = null;
-            tail = null;
-            return;
+        } else if (index == 0) {
+            head = head.nextElement;
+        } else {
+            Node node = getNodeByIndex(index - 1);
+            node.nextElement = node.nextElement.nextElement;
         }
-        Node current = head;
-        while (current.nextElement != null) {
-            if (counter == index) {
-                if (tail == current.nextElement) {
-                    tail = current;
-                }
-                current.nextElement = current.nextElement.nextElement;
-                return;
-            }
-            current = current.nextElement;
-            counter++;
-        }
+        size--;
     }
 
     public int getSize() {
-        Node node = head;
-        int size = 1;
-        if (isEmpty()) {
-            return 0;
-        } else {
-            while (node.nextElement != null) {
-                size++;
-                node = node.nextElement;
-            }
-            return size;
-        }
+        return size;
     }
 
     public boolean isEmpty() {
