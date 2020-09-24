@@ -6,16 +6,14 @@ public class InfixToPostfix {
 
     private static int getPriority(char c) {
         switch (c) {
-            case '+', '-':
-                return 1;
-            case '*', '/':
-                return 2;
-            case '^':
-                return 3;
+        case '+', '-':
+            return 1;
+        case '*', '/', '%':
+            return 2;
         }
         return -1;
     }
-    
+
     public static String turnToPostfix(String statement) {
         String result = "";
         Stack<Character> stack = new Stack<>();
@@ -37,9 +35,46 @@ public class InfixToPostfix {
                 result += c;
             }
         }
-        
+
         for (int i = 0; i <= stack.size(); i++) {
             result += stack.pop();
+        }
+        return result;
+    }
+
+    public static double calculate(String infixStatement, double... var) {
+        double result = 0;
+        boolean isFirstOperator = true;
+        int counterOfVars = 0;
+        Stack<Double> operands = new Stack<>();
+        for (char c : infixStatement.toCharArray()) {
+            if (Character.isLetter(c)) {
+                operands.push(var[counterOfVars]);
+                counterOfVars++;
+            } else if (isFirstOperator) {
+                result = operands.get(operands.size() - 2);
+                operands.remove(operands.size() - 2);
+                isFirstOperator = false;
+            }
+            if (!Character.isLetter(c)) {
+                switch (c) {
+                case '+':
+                    result += operands.pop();
+                    break;
+                case '-':
+                    result -= operands.pop();
+                    break;
+                case '*':
+                    result *= operands.pop();
+                    break;
+                case '/':
+                    result /= operands.pop();
+                    break;
+                case '%':
+                    result %= operands.pop();
+                    break;
+                }
+            }
         }
         return result;
     }
