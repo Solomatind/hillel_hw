@@ -40,7 +40,7 @@ public class TextAlgorithm {
         return result.toString();
     }
 
-    public int countOfPunñtMarks() {
+    public int countOfPunctMarks() {
         Pattern punctMark = Pattern.compile("\\p{P}");
         Matcher punctMarks = punctMark.matcher(inputText);
         return (int) punctMarks.results().count();

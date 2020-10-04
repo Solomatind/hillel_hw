@@ -9,7 +9,7 @@ public class TextAlgorithmRunner {
         System.out.println(textAlgorithm.countOfWords());
         System.out.println(textAlgorithm.replaceChar(3, '2'));
         System.out.println(textAlgorithm.uniqWordsWithSameBeginAndEnd());
-        System.out.println("Count of punct marks = " + textAlgorithm.countOfPunñtMarks());
+        System.out.println("Count of punct marks = " + textAlgorithm.countOfPunctMarks());
     }
 
 }
