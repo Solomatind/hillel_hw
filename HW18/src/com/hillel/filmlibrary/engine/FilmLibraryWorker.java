@@ -59,7 +59,7 @@ public class FilmLibraryWorker {
     public List<Actor> findActorsForNFilm(int filmsCount) {
         List<Actor> actorList = new ArrayList<>();
         try (ResultSet result = worker.getResultSet(FilmLibraryQuery.ACTORS_FOR_N_FILM, filmsCount);) {
-           actorList = makeActorListBySet(result);
+            actorList = makeActorListBySet(result);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -69,7 +69,7 @@ public class FilmLibraryWorker {
     public List<Actor> findActorsAsDirector() {
         List<Actor> actorList = new ArrayList<>();
         try (ResultSet result = worker.getResultSet(FilmLibraryQuery.ACTORS_AS_DIRECTORS);) {
-           actorList = makeActorListBySet(result);
+            actorList = makeActorListBySet(result);
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -18,7 +18,7 @@ public class FilmLibraryRunner {
             System.out.println();
             System.out.println(worker.findActorsAsDirector());
             System.out.println();
-            //System.out.println(worker.deleteFilmsOlderGivenYears(20));
+            // System.out.println(worker.deleteFilmsOlderGivenYears(20));
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
