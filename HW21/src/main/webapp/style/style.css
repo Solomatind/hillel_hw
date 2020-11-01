@@ -1,0 +1,24 @@
+body {
+	background: url("img/back.jpg") no-repeat ;
+	background-size: 100%;
+}
+table {
+   width: 100%;
+   box-sizing:border-box;
+   height: 23%;
+   text-align: center;
+   background-color: white;
+}
+td {
+	background-image: url("img/td.png");
+	background-size: 100%;
+}
+
+form {
+	margin-top: 15px;
+	text-align: center;
+}
+
+c {
+	text-align: center;
+}
