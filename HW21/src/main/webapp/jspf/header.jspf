@@ -1,5 +1,5 @@
 <link href="style/style.css" rel="stylesheet" type="text/css">
-<table border="1" >
+<table border="1">
 <tr><td width="100"><a href="filmsByYear">Get films by current and previous year</a></td>
 <td width="100"><a href="actorsByFilm">Get actors by film</a></td>
 <td width="100"><a href="actorsForNFilm">Get actors for N films</a></td>

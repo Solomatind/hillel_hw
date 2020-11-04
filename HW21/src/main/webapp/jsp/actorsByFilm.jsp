@@ -7,10 +7,17 @@
 <body>
 	<c:import url="/jspf/header.jspf"></c:import>
 	<form action="actorsByFilm" method="post">
-	<br><br>
+		<br>
+		<br>
 		<h1>Insert film:</h1>
 		<input type="text" name="film"> <input type="submit">
 	</form>
-	<c:out value="${actors}"></c:out>
+	<div class="out">
+		<h3>
+			<c:forEach items="${actors}" var="actor">
+        ${actor}<br>
+			</c:forEach>
+		</h3>
+	</div>
 </body>
 </html>

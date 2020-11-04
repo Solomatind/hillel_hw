@@ -12,7 +12,6 @@
 		<h1>Insert years:</h1>
 		<input type="number" name="years"> <input type="submit">
 	</form>
-	<h1>Count of deleting films:</h1>
-	<c:out value="${status}"></c:out>
+	<h1 align="center">Count of deleting films: ${status}</h1>
 </body>
 </html>

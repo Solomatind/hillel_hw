@@ -13,6 +13,12 @@
 		<h1>Insert count of films:</h1>
 		<input type="number" name="film"> <input type="submit">
 	</form>
-	<c:out value="${actors}"></c:out>
+	<div class="out">
+        <h3>
+            <c:forEach items="${actors}" var="actor">
+        ${actor}<br>
+            </c:forEach>
+        </h3>
+    </div>
 </body>
 </html>

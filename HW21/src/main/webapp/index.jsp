@@ -6,7 +6,15 @@
 </head>
 <body>
 	<c:import url="/jspf/header.jspf"></c:import>
-	<c:out value="${films}"></c:out>
-	<c:out value="${actors}"></c:out>
+	<div class="out">
+		<h3>
+			<c:forEach items="${films}" var="film">
+        ${film}<br>
+			</c:forEach>
+			<c:forEach items="${actors}" var="actor">
+        ${actor}<br>
+			</c:forEach>
+		</h3>
+	</div>
 </body>
 </html>
