@@ -1,19 +1,19 @@
 body {
-	background: url("img/back.jpg") no-repeat ;
+	background: url("img/back.jpg") no-repeat;
 	background-size: 100%;
 	position: relative;
 }
 
 table {
-   width: 100%;
-   box-sizing:border-box;
-   height: 23%;
-   text-align: center;
-   background-color: white;
+	width: 100%;
+	box-sizing: border-box;
+	height: 23%;
+	text-align: center;
+	background-color: white;
 }
 
 td {
-	background-image: url("img/td.png") ;
+	background-image: url("img/td.png");
 	background-size: 100%;
 	font-size: 16pt;
 	padding: 35px;
@@ -23,6 +23,7 @@ a {
 	color: black;
 	font-weight: bold;
 }
+
 form {
 	margin-top: 15px;
 	text-align: center;

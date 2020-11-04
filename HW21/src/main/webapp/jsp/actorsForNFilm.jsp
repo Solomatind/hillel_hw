@@ -8,17 +8,16 @@
 	<c:import url="/jspf/header.jspf"></c:import>
 
 	<form action="actorsForNFilm" method="post">
-		<br>
-		<br>
+		<br> <br>
 		<h1>Insert count of films:</h1>
 		<input type="number" name="film"> <input type="submit">
 	</form>
 	<div class="out">
-        <h3>
-            <c:forEach items="${actors}" var="actor">
+		<h3>
+			<c:forEach items="${actors}" var="actor">
         ${actor}<br>
-            </c:forEach>
-        </h3>
-    </div>
+			</c:forEach>
+		</h3>
+	</div>
 </body>
 </html>
