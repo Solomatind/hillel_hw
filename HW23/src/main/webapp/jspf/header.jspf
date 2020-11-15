@@ -1,0 +1,28 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link href="style/style.css" rel="stylesheet" type="text/css">
+<div class="login" align="right">
+	<c:if test="${sessionScope.user == NULL}">
+		<h3>
+			<a href="authorization">Log in</a>
+		</h3>
+	</c:if>
+	<c:if test="${sessionScope.user != NULL}">
+		<h3>
+			Authorized as ${sessionScope.user}<br> <a href="logout">Log
+				out</a>
+		</h3>
+	</c:if>
+</div>
+<table border="1">
+	<tr>
+		<td width="100"><a href="filmsByYear">Get films by current
+				and previous year</a></td>
+		<td width="100"><a href="actorsByFilm">Get actors by film</a></td>
+		<td width="100"><a href="actorsForNFilm">Get actors for N
+				films</a></td>
+		<td width="100"><a href="actorsAsDirector">Get actors as
+				directors</a></td>
+		<td width="100"><a href="deleteFilm">Delete films older given
+				years</a></td>
+	</tr>
+</table>
