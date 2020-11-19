@@ -1,0 +1,69 @@
+body {
+	background: url("img/back.jpg") no-repeat;
+	background-color: #370504;
+	background-size: 100%;
+	position: relative;
+}
+
+table {
+	width: 100%;
+	box-sizing: border-box;
+	height: 23%;
+	text-align: center;
+	background-color: white;
+}
+
+td {
+	background-image: url("img/td.png");
+	background-size: 100%;
+	font-size: 16pt;
+	padding: 35px;
+}
+
+a {
+	color: black;
+	font-weight: bold;
+}
+
+form {
+	margin-top: 15px;
+	text-align: center;
+}
+
+.out {
+	margin-top: 55px;;
+	text-align: center;
+}
+
+.locale {
+	width: 70%;
+	min-height: 30px;
+	float: left;
+}
+
+.lang {
+	margin: auto;
+	width: 200px;
+	position: absolute;
+}
+
+.login {
+	width: 30%;
+	min-height: 30px;
+	margin-left: 70%;
+	padding-right: 10px;
+	text-align: right;
+	color: white;
+}
+
+.login a {
+	color: white;
+}
+
+.authorization {
+	color: white;
+}
+
+.errormesage {
+	color: red;
+}
